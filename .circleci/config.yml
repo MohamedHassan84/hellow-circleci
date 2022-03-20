@@ -7,12 +7,12 @@ version: 2.1
 jobs:
   print_hello:
     docker:
-      - image: circleci/node:13.8.0
+      - image: cimg/base:2020.01
     steps:
       - run: "echo hello $My_Var "   # \<< $CIRCLE_BRANCH \>> branch
   print_world:
     docker:
-      - image: circleci/node:13.8.0
+      - image: cimg/base:2020.01
     steps:
       - run: "echo hello $My_Var "
 workflows:
