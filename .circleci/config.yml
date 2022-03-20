@@ -9,12 +9,12 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo hello \<< $CIRCLE_BRANCH \>> branch
+      - run: "echo hello $My_Var "   # \<< $CIRCLE_BRANCH \>> branch
   print_world:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo  hello \<< Pipline.id \>>
+      - run: "echo hello $My_Var "
 workflows:
   # Name the workflow "welcome"
   welcome:
