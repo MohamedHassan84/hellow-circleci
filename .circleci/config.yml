@@ -9,7 +9,7 @@ commands:
     parameters:
       to: 
         type: string
-        Default: "id of circle project"
+        default: "id of circle project"
     steps:
       - run: echo $CIRCLE_WORKFLOW_ID > ~/output.txt   # \<< $CIRCLE_BRANCH \>> branch
       - persist_to_workspace:
