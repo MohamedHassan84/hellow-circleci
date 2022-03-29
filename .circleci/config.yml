@@ -7,10 +7,10 @@ defaults: &imag   # defaults to be reuse
 commands:
   myfunction:
     Description: "my function"
-    # parameters:
-    #   to: 
-    #     type: string
-    #     Default: "id of circle project"
+    parameters:
+      to: 
+        type: string
+        Default: "id of circle project"
     steps:
       - run: echo $CIRCLE_WORKFLOW_ID > ~/output.txt   # \<< $CIRCLE_BRANCH \>> branch
       - persist_to_workspace:
@@ -22,6 +22,7 @@ jobs:
     <<: *imag
     steps:
       - myfunction:
+          to: " argoooo "
       
       #- run: return 1
   print_output_file:
