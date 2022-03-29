@@ -21,7 +21,7 @@ jobs:
   save_hello_world_output:
     <<: *imag
     steps:
-      - myfunction
+      - myfunction:
       
       #- run: return 1
   print_output_file:
