@@ -11,7 +11,7 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - persist_to_workspace:
-          root: /tmp/myworkspace
+          root: ~/
           paths:
             - output.txt
       - run: echo "text to output here" > output.txt   # \<< $CIRCLE_BRANCH \>> branch
@@ -23,8 +23,8 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - attach_workspace:
-          at: /tmp/myworkspace
-      - run: cat output.txt
+          at: ~/
+      - run: cat ~/output.txt
       
      # - when: on_fail
 workflows:
