@@ -1,17 +1,27 @@
 version: 2.1
-defaults: &imag
+defaults: &imag   # defaults to be reuse
     docker:
       #- image: cimg/base:2020.01
       - image: circleci/node:13.8.0
-jobs:
-  save_hello_world_output:
-    <<: *imag
+
+commands:
+  myfunction:
+    Description: "my function"
+    # parameters:
+    #   to: 
+    #     type: string
+    #     Default: "id of circle project"
     steps:
-      - run: echo "text to output here" > ~/output.txt   # \<< $CIRCLE_BRANCH \>> branch
+      - run: echo $CIRCLE_WORKFLOW_ID > ~/output.txt   # \<< $CIRCLE_BRANCH \>> branch
       - persist_to_workspace:
           root: ~/
           paths:
             - output.txt
+jobs:
+  save_hello_world_output:
+    <<: *imag
+    steps:
+      - myfunction
       
       #- run: return 1
   print_output_file:
