@@ -6,7 +6,6 @@ defaults: &imag   # defaults to be reuse
 
 commands:
   myfunction:
-    Description: "my function"
     parameters:
       to: 
         type: string
