@@ -1,14 +1,11 @@
 version: 2.1
-# # Use a package of configuration called an orb.
-# orbs:
-#   # Declare a dependency on the welcome-orb
-#   welcome: circleci/welcome-orb@0.4.1
-# # Orchestrate or schedule a set of jobs
-jobs:
-  save_hello_world_output:
+defaults: &imag
     docker:
       #- image: cimg/base:2020.01
       - image: circleci/node:13.8.0
+jobs:
+  save_hello_world_output:
+    <<: *imag
     steps:
       - run: echo "text to output here" > ~/output.txt   # \<< $CIRCLE_BRANCH \>> branch
       - persist_to_workspace:
@@ -18,9 +15,7 @@ jobs:
       
       #- run: return 1
   print_output_file:
-    docker:
-      #- image: cimg/base:2020.01
-      - image: circleci/node:13.8.0
+    <<: *imag
     steps:
       - attach_workspace:
           at: ~/
