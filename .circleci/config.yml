@@ -1,11 +1,11 @@
 version: 2.1
-defaults: &imag   # defaults to be reuse
+defaults: &imag   # defaults to be reuse in code
     docker:
       #- image: cimg/base:2020.01
       - image: circleci/node:13.8.0
 
-commands:
-  myfunction:
+commands:      # multi of commands to be reuse
+  myfunction:    #name of function
     # parameters:
     #   to: 
     #     type: string
@@ -20,10 +20,14 @@ jobs:
   save_hello_world_output:
     <<: *imag
     steps:
-      - myfunction
+      - myfunction     # call the function
           # to: " argoooo "
+      - run: exit 1
+      - run:
+          name: Upload Failed Tests
+          command: echo " error occured when "
+          when: on_fail
       
-      #- run: return 1
   print_output_file:
     <<: *imag
     steps:
